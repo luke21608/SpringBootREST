@@ -1,0 +1,58 @@
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    com.demo.mapper.*: DEBUG  
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: password
+
+---
+#dev
+spring:
+ profiles: dev
+ datasource:
+  demo:
+   jdbc-url: jdbc:sqlserver://LUKE-ACER-RED:1433;instance=SQLEXPRESS;databaseName=demo
+   username: demo
+   password: ENC(Nm109uGs6vlfGR/c0lVBZfJK2hctr8Z0)
+   driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+   time-between-eviction-runs-millis: 60000
+   min-evictable-idle-time-millis: 30000
+   max-idle: 5
+   max-wait: 10000
+   min-idle: 2
+   initial-size: 2
+   max-active: 30
+   validation-query: SELECT GETDATE()
+  test:
+   jdbc-url: jdbc:sqlserver://LUKE-ACER-RED:1433;instance=SQLEXPRESS;databaseName=test
+   username: test
+   password: ENC(YOkjhrWpytLqyG7Fj6Kvwo/0yLevShLa)
+   driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+   time-between-eviction-runs-millis: 60000
+   min-evictable-idle-time-millis: 30000
+   max-idle: 5
+   max-wait: 10000
+   min-idle: 2
+   initial-size: 2
+   max-active: 30
+   validation-query: SELECT GETDATE()
+   
+author:
+ name: Luke from dev
+ email: luke21608@gmail.com
+
+ 
+---
+#uat
+spring:
+ profiles: uat
+
+author:
+ name: Luke Lu
+ email: luke21608@gmail.com

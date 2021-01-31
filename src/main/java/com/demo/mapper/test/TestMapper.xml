@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.test.TestMapper">
+
+	<resultMap id="BaseResultMap" type="com.demo.bean.Login">
+		<id column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<id column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		USER_ID, UPDATE_TIME
+	</sql>
+
+	<select id="queryByUserId" parameterType="String" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from T_LOGIN
+		where 1=1
+		AND USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
+	
+</mapper>
