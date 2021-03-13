@@ -1,6 +1,6 @@
 package com.demo;
 
-public class PlayerThread extends Thread {
+public class PlayerRunnable implements Runnable {
 	
 	private Team team;
 	
@@ -9,7 +9,7 @@ public class PlayerThread extends Thread {
 
 	private boolean goal = true;
 	
-	public PlayerThread(Team team, int point) {
+	public PlayerRunnable(Team team, int point) {
 		this.team = team;
 		this.point = point;
 	}
@@ -18,15 +18,15 @@ public class PlayerThread extends Thread {
 	public void run() {
 		while(goal) {
 			try {
-				sleep(500);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			score = team.fieldGoal(point);
+			score = team.fieldGoal_2(point);
 			
-			if(score >= 30) {
+			if(score <= 0) {
 				goal = false;
 			}
 		}
